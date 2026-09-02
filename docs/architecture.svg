@@ -1,0 +1,138 @@
+<svg viewBox="0 0 820 920" xmlns="http://www.w3.org/2000/svg" role="img" style="font-family: system-ui, -apple-system, sans-serif;">
+  <title>AgentCAZ Architecture</title>
+  <desc>Visual guide showing the multi-agent pipeline: CLI orchestrator connects to Classifier, Research Agent, Solution Agent, and Outline Agent, each with their tools and outputs.</desc>
+
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#868e96"/>
+    </marker>
+  </defs>
+
+  <style>
+    .title { font-size: 18px; font-weight: 700; fill: #212529; }
+    .subtitle { font-size: 11px; fill: #6c757d; }
+    .box-title { font-size: 13px; font-weight: 600; }
+    .box-sub { font-size: 10px; fill: #6c757d; }
+    .tool-label { font-size: 9.5px; font-weight: 500; }
+    .tool-desc { font-size: 8.5px; fill: #6c757d; }
+    .output-label { font-size: 9.5px; font-weight: 600; }
+    .checkpoint { font-size: 10px; font-weight: 600; }
+    .legend { font-size: 9.5px; fill: #6c757d; }
+  </style>
+
+  <!-- Title -->
+  <text x="410" y="30" text-anchor="middle" class="title">AgentCAZ — Multi-Agent Architecture</text>
+  <text x="410" y="48" text-anchor="middle" class="subtitle">PM Interview Case Prep Pipeline</text>
+
+  <!-- ORCHESTRATOR -->
+  <rect x="280" y="68" width="260" height="52" rx="8" fill="#edf2ff" stroke="#4263eb" stroke-width="1.5"/>
+  <text x="410" y="89" text-anchor="middle" class="box-title" fill="#4263eb">CLI Orchestrator</text>
+  <text x="410" y="104" text-anchor="middle" class="box-sub">cli.py — Click commands, pipeline sequencing, checkpoints</text>
+
+  <line x1="410" y1="120" x2="410" y2="148" stroke="#868e96" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- CLASSIFIER -->
+  <rect x="310" y="150" width="200" height="44" rx="6" fill="#f8f9fa" stroke="#dee2e6" stroke-width="1"/>
+  <text x="410" y="170" text-anchor="middle" class="box-title" fill="#212529">Classifier</text>
+  <text x="410" y="184" text-anchor="middle" class="box-sub">Sonnet 5 · single API call → archetype</text>
+
+  <line x1="410" y1="194" x2="410" y2="228" stroke="#868e96" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- RESEARCH AGENT -->
+  <rect x="60" y="230" width="700" height="140" rx="10" fill="#f8f9fa" stroke="#2b8a3e" stroke-width="1.5"/>
+  <text x="90" y="254" class="box-title" fill="#2b8a3e">1. Research Agent</text>
+  <text x="90" y="270" class="box-sub">Sonnet 5 · Tool Runner loop with web search · pause_turn handling</text>
+
+  <rect x="80" y="282" width="140" height="36" rx="4" fill="#ebfbee" stroke="#2b8a3e" stroke-width="0.8" stroke-dasharray="3,2"/>
+  <text x="150" y="297" text-anchor="middle" class="tool-label" fill="#2b8a3e">web_search</text>
+  <text x="150" y="310" text-anchor="middle" class="tool-desc">Anthropic server tool</text>
+
+  <rect x="235" y="282" width="140" height="36" rx="4" fill="#ebfbee" stroke="#2b8a3e" stroke-width="0.8" stroke-dasharray="3,2"/>
+  <text x="305" y="297" text-anchor="middle" class="tool-label" fill="#2b8a3e">save_research</text>
+  <text x="305" y="310" text-anchor="middle" class="tool-desc">Structured markdown</text>
+
+  <rect x="390" y="282" width="140" height="36" rx="4" fill="#ebfbee" stroke="#2b8a3e" stroke-width="0.8" stroke-dasharray="3,2"/>
+  <text x="460" y="297" text-anchor="middle" class="tool-label" fill="#2b8a3e">save_data_point</text>
+  <text x="460" y="310" text-anchor="middle" class="tool-desc">Verified numbers + URLs</text>
+
+  <rect x="545" y="282" width="140" height="36" rx="4" fill="#ebfbee" stroke="#2b8a3e" stroke-width="0.8" stroke-dasharray="3,2"/>
+  <text x="615" y="297" text-anchor="middle" class="tool-label" fill="#2b8a3e">read_file</text>
+  <text x="615" y="310" text-anchor="middle" class="tool-desc">Read from case dir</text>
+
+  <rect x="80" y="328" width="160" height="28" rx="4" fill="#ffffff" stroke="#2b8a3e" stroke-width="1"/>
+  <text x="160" y="347" text-anchor="middle" class="output-label" fill="#2b8a3e">→ research.md</text>
+
+  <rect x="255" y="328" width="160" height="28" rx="4" fill="#ffffff" stroke="#2b8a3e" stroke-width="1"/>
+  <text x="335" y="347" text-anchor="middle" class="output-label" fill="#2b8a3e">→ data_points.json</text>
+
+  <!-- Checkpoint 1 -->
+  <rect x="310" y="385" width="200" height="30" rx="15" fill="#fff9db" stroke="#e67700" stroke-width="1.2"/>
+  <text x="410" y="405" text-anchor="middle" class="checkpoint" fill="#e67700">⏸ User Checkpoint</text>
+  <line x1="410" y1="370" x2="410" y2="385" stroke="#868e96" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="410" y1="415" x2="410" y2="438" stroke="#868e96" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- SOLUTION AGENT -->
+  <rect x="60" y="440" width="700" height="130" rx="10" fill="#f8f9fa" stroke="#4263eb" stroke-width="1.5"/>
+  <text x="90" y="464" class="box-title" fill="#4263eb">2. Solution Agent</text>
+  <text x="90" y="480" class="box-sub">Opus 5 · adaptive thinking · reads research, crafts RICE-prioritized solution</text>
+
+  <rect x="80" y="492" width="200" height="36" rx="4" fill="#edf2ff" stroke="#4263eb" stroke-width="0.8" stroke-dasharray="3,2"/>
+  <text x="180" y="507" text-anchor="middle" class="tool-label" fill="#4263eb">read_file</text>
+  <text x="180" y="520" text-anchor="middle" class="tool-desc">research.md, data_points.json</text>
+
+  <rect x="300" y="492" width="200" height="36" rx="4" fill="#edf2ff" stroke="#4263eb" stroke-width="0.8" stroke-dasharray="3,2"/>
+  <text x="400" y="507" text-anchor="middle" class="tool-label" fill="#4263eb">save_solution</text>
+  <text x="400" y="520" text-anchor="middle" class="tool-desc">8 structured fields</text>
+
+  <rect x="80" y="538" width="160" height="28" rx="4" fill="#ffffff" stroke="#4263eb" stroke-width="1"/>
+  <text x="160" y="557" text-anchor="middle" class="output-label" fill="#4263eb">→ solution.md</text>
+
+  <!-- Checkpoint 2 -->
+  <rect x="310" y="585" width="200" height="30" rx="15" fill="#fff9db" stroke="#e67700" stroke-width="1.2"/>
+  <text x="410" y="605" text-anchor="middle" class="checkpoint" fill="#e67700">⏸ User Checkpoint</text>
+  <line x1="410" y1="570" x2="410" y2="585" stroke="#868e96" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="410" y1="615" x2="410" y2="638" stroke="#868e96" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- OUTLINE AGENT -->
+  <rect x="60" y="640" width="700" height="130" rx="10" fill="#f8f9fa" stroke="#7048e8" stroke-width="1.5"/>
+  <text x="90" y="664" class="box-title" fill="#7048e8">3. Outline Agent</text>
+  <text x="90" y="680" class="box-sub">Opus 5 · adaptive thinking · designs slide narrative (8-14 slides)</text>
+
+  <rect x="80" y="692" width="200" height="36" rx="4" fill="#f3f0ff" stroke="#7048e8" stroke-width="0.8" stroke-dasharray="3,2"/>
+  <text x="180" y="707" text-anchor="middle" class="tool-label" fill="#7048e8">read_file</text>
+  <text x="180" y="720" text-anchor="middle" class="tool-desc">research.md, solution.md</text>
+
+  <rect x="300" y="692" width="200" height="36" rx="4" fill="#f3f0ff" stroke="#7048e8" stroke-width="0.8" stroke-dasharray="3,2"/>
+  <text x="400" y="707" text-anchor="middle" class="tool-label" fill="#7048e8">save_outline</text>
+  <text x="400" y="720" text-anchor="middle" class="tool-desc">Full markdown outline</text>
+
+  <rect x="80" y="738" width="180" height="28" rx="4" fill="#ffffff" stroke="#7048e8" stroke-width="1"/>
+  <text x="170" y="757" text-anchor="middle" class="output-label" fill="#7048e8">→ deck_outline.md</text>
+
+  <!-- FUTURE -->
+  <rect x="310" y="790" width="200" height="30" rx="15" fill="#fff9db" stroke="#e67700" stroke-width="1.2"/>
+  <text x="410" y="810" text-anchor="middle" class="checkpoint" fill="#e67700">⏸ User Checkpoint</text>
+  <line x1="410" y1="770" x2="410" y2="790" stroke="#868e96" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <rect x="120" y="835" width="240" height="40" rx="6" fill="#f8f9fa" stroke="#dee2e6" stroke-width="1" stroke-dasharray="5,3"/>
+  <text x="240" y="855" text-anchor="middle" class="box-sub" fill="#6c757d">Deck Agent (Canva API)</text>
+  <text x="240" y="868" text-anchor="middle" class="tool-desc">Coming soon</text>
+
+  <rect x="460" y="835" width="240" height="40" rx="6" fill="#f8f9fa" stroke="#dee2e6" stroke-width="1" stroke-dasharray="5,3"/>
+  <text x="580" y="855" text-anchor="middle" class="box-sub" fill="#6c757d">Evaluator Agent (scoring)</text>
+  <text x="580" y="868" text-anchor="middle" class="tool-desc">Coming soon</text>
+
+  <line x1="350" y1="820" x2="240" y2="835" stroke="#dee2e6" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#arrow)"/>
+  <line x1="470" y1="820" x2="580" y2="835" stroke="#dee2e6" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#arrow)"/>
+
+  <!-- LEGEND -->
+  <rect x="70" y="896" width="12" height="8" rx="2" fill="#ebfbee" stroke="#2b8a3e" stroke-width="0.8" stroke-dasharray="3,2"/>
+  <text x="88" y="904" class="legend">Tool</text>
+  <rect x="130" y="896" width="12" height="8" rx="2" fill="#ffffff" stroke="#2b8a3e" stroke-width="1"/>
+  <text x="148" y="904" class="legend">Output file</text>
+  <rect x="210" y="896" width="50" height="8" rx="4" fill="#fff9db" stroke="#e67700" stroke-width="0.8"/>
+  <text x="268" y="904" class="legend">User review</text>
+  <rect x="330" y="896" width="12" height="8" rx="2" fill="#f8f9fa" stroke="#dee2e6" stroke-width="1" stroke-dasharray="4,3"/>
+  <text x="348" y="904" class="legend">Not yet built</text>
+  <text x="430" y="904" class="legend">All agents use Tool Runner (client.beta.messages.tool_runner)</text>
+</svg>

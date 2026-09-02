@@ -1,0 +1,14 @@
+[project]
+name = "agentcaz"
+version = "0.1.0"
+description = "Multi-agent PM interview case prep system"
+requires-python = ">=3.9"
+dependencies = [
+    "anthropic>=0.116.0",
+    "click>=8.0",
+    "python-dotenv>=1.0",
+    "rich>=13.0",
+]
+
+[project.scripts]
+caz = "src.cli:cli"
