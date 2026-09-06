@@ -15,6 +15,8 @@ AgentCAZ runs a pipeline of specialized AI agents, each with its own tools and m
 
 Between each step, you can review and edit the output before continuing.
 
+There's also a standalone **Industry Research Agent** for researching an entire industry/sector without a specific case question — covering market sizing, competitive dynamics, financial benchmarks, supply chain, technology trends, and regulatory landscape.
+
 ## Setup
 
 ### 1. Install dependencies
@@ -64,6 +66,14 @@ python3 run.py solution -c "Spotify" -q "How would you improve Spotify's podcast
 python3 run.py outline -c "Spotify" -q "How would you improve Spotify's podcast discovery?" -a improve_product
 ```
 
+### Industry research (standalone)
+
+Research an entire industry without a specific case question:
+
+```bash
+python3 run.py industry -i "Fintech"
+```
+
 ### List cases
 
 ```bash
@@ -79,6 +89,7 @@ python3 run.py list
 | `-a`, `--archetype` | Force archetype — skips classifier API call |
 | `--dev` | Replay from cached transcript, no API calls |
 | `--auto` | Skip user checkpoints (full pipeline only) |
+| `-i`, `--industry` | Industry/sector name (industry command only) |
 
 ## Output Structure
 
@@ -94,6 +105,13 @@ cases/
       research_transcript.json
       solution_transcript.json
       outline_transcript.json
+
+industries/
+  fintech/
+    industry_research.md   # Market, competition, trends, financials
+    data_points.json       # Verified numbers with source URLs
+    .cache/
+      industry_transcript.json
 ```
 
 ## Project Structure
@@ -108,6 +126,7 @@ AgentCAZ/
       research.py        # Research agent (Sonnet 5 + web search)
       solution.py        # Solution agent (Opus 5 + adaptive thinking)
       outline.py         # Outline agent (Opus 5 + adaptive thinking)
+      industry.py        # Industry research agent (Sonnet 5 + web search)
     tools/
       file_tools.py      # @beta_tool definitions for reading/writing case files
     prompts/
@@ -115,6 +134,7 @@ AgentCAZ/
       researcher.md      # Research process + archetype-specific focus
       solver.md           # Solution framework (RICE, AARRR)
       outliner.md        # Slide narrative design
+      industry_researcher.md  # Industry research process
   docs/
     architecture.svg     # Architecture diagram
   agent_architecture.md  # Detailed architecture plan
@@ -128,13 +148,14 @@ AgentCAZ/
 | Research | Sonnet 5 | High-volume web search, cost-efficient |
 | Solution | Opus 5 | Strong reasoning for creative solutioning |
 | Outline | Opus 5 | Narrative structure requires judgment |
+| Industry Research | Sonnet 5 | High-volume web search, cost-efficient |
 
 ## PM Frameworks Used
 
 - **CIRCLES** — Problem decomposition (Research Agent)
 - **TAM/SAM/SOM** — Market sizing (Research Agent)
 - **Jobs-to-be-Done** — User need identification (Research Agent)
-- **Porter's Five Forces** — Competitive analysis for market entry (Research Agent)
+- **Porter's Five Forces** — Competitive analysis for market entry (Research Agent, Industry Research Agent)
 - **RICE** — Feature prioritization (Solution Agent)
 - **AARRR** — Metrics framework (Solution Agent)
 

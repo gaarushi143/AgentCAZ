@@ -8,6 +8,7 @@ import anthropic
 # Directory paths
 PROJECT_ROOT = Path(__file__).parent.parent
 CASES_DIR = PROJECT_ROOT / "cases"
+INDUSTRIES_DIR = PROJECT_ROOT / "industries"
 PROMPTS_DIR = Path(__file__).parent / "prompts"
 TEMPLATES_DIR = PROJECT_ROOT / "templates"
 

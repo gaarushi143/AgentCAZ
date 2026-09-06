@@ -10,7 +10,7 @@ from pathlib import Path
 
 from anthropic import beta_tool
 
-from src.config import CASES_DIR
+from src.config import CASES_DIR, INDUSTRIES_DIR
 
 
 def _case_dir(company: str) -> Path:
@@ -216,3 +216,105 @@ def make_outline_tools(company: str, archetype: str = ""):
         return f"Deck outline saved to {path}"
 
     return [read_file, save_outline]
+
+
+def _industry_dir(industry: str) -> Path:
+    """Return (and create) the directory for an industry, e.g. industries/fintech/."""
+    safe_name = industry.lower().replace(" ", "_").replace("/", "_")
+    d = INDUSTRIES_DIR / safe_name
+    d.mkdir(parents=True, exist_ok=True)
+    return d
+
+
+def make_industry_tools(industry: str):
+    """Build the industry research agent's tool set: save_industry_research, save_data_point, read_file."""
+    ind_dir = _industry_dir(industry)
+
+    @beta_tool
+    def save_industry_research(
+        market_overview: str,
+        financial_benchmarks: str,
+        competitive_dynamics: str,
+        barriers_to_entry: str,
+        supply_chain_and_distribution: str,
+        technology_and_innovation: str,
+        regulatory_environment: str,
+        consumer_behavior: str,
+        data_points: str,
+    ) -> str:
+        """Save the completed industry research to a structured markdown file.
+
+        Args:
+            market_overview: Market size, TAM/SAM/SOM, CAGR, historical performance, key players, market share, and concentration ratios.
+            financial_benchmarks: Industry-average profit margins (gross, operating, net), typical cost structures, dominant pricing models, and revenue models.
+            competitive_dynamics: Porter's Five Forces analysis — buyer power, supplier power, threat of substitutes, threat of new entrants, and competitive rivalry — with evidence for each.
+            barriers_to_entry: Startup costs, regulatory hurdles, technology requirements, capital intensity, network effects, and data moats.
+            supply_chain_and_distribution: How value flows from production to end customer, key distribution channels, logistics, and chokepoints.
+            technology_and_innovation: How automation, AI, and digital transformation are reshaping the industry, plus emerging technologies that could disrupt the status quo.
+            regulatory_environment: Key government policies, taxation, compliance requirements, and pending legislation affecting the industry.
+            consumer_behavior: Shifting preferences, sustainability demands, major pain points, and evolving expectations.
+            data_points: All verified numbers with source URLs, formatted as a list.
+        """
+        content = f"""# Industry Research: {industry}
+
+## Market Overview
+{market_overview}
+
+## Financial Benchmarks
+{financial_benchmarks}
+
+## Competitive Dynamics (Porter's Five Forces)
+{competitive_dynamics}
+
+## Barriers to Entry
+{barriers_to_entry}
+
+## Supply Chain & Distribution
+{supply_chain_and_distribution}
+
+## Technology & Innovation
+{technology_and_innovation}
+
+## Regulatory Environment
+{regulatory_environment}
+
+## Consumer Behavior
+{consumer_behavior}
+
+## Data Points
+{data_points}
+"""
+        path = ind_dir / "industry_research.md"
+        path.write_text(content)
+        return f"Industry research saved to {path}"
+
+    @beta_tool
+    def save_data_point(fact: str, value: str, source_url: str) -> str:
+        """Store a verified data point with its source.
+
+        Args:
+            fact: What the data point describes, e.g. "Global SaaS market size 2024".
+            value: The numeric value, e.g. "$232 billion".
+            source_url: URL where this data was found.
+        """
+        path = ind_dir / "data_points.json"
+        data = []
+        if path.exists():
+            data = json.loads(path.read_text())
+        data.append({"fact": fact, "value": value, "source": source_url})
+        path.write_text(json.dumps(data, indent=2))
+        return f"Saved: {fact} = {value}"
+
+    @beta_tool
+    def read_file(filename: str) -> str:
+        """Read a file from the current industry directory.
+
+        Args:
+            filename: Name of the file to read, e.g. "industry_research.md" or "data_points.json".
+        """
+        path = ind_dir / filename
+        if not path.exists():
+            return f"File not found: {filename}"
+        return path.read_text()
+
+    return [save_industry_research, save_data_point, read_file]

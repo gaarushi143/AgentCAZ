@@ -139,7 +139,29 @@ async def run_case(company: str, question: str):
 - **Slide count**: Model decides based on content strength (typically 8-14 slides)
 - **Output**: `cases/{company}/deck_outline.md` with per-slide: headline, purpose, convey, content structure, recommended visuals
 
-### 4. Deck Agent
+### 4. Industry Research Agent (standalone, optional)
+- **Model**: `claude-sonnet-5` (cost-efficient for high-volume search)
+- **Role**: Researches an entire industry/sector — not tied to a specific company or case question
+- **Tools**:
+  - `web_search_20260209` (Anthropic built-in server tool) — for live search
+  - `@beta_tool save_industry_research` — writes structured output to `industries/{industry}/industry_research.md`
+  - `@beta_tool save_data_point` — stores verified numbers with sources
+- **System prompt includes**: Three research categories — Core Market & Financial Topics, Dynamics & Competition, Trends & External Forces
+- **Output format** — structured markdown:
+  ```
+  # Industry Research: {Industry}
+  ## Market Overview (TAM/SAM/SOM, CAGR, key players, market share, concentration)
+  ## Financial Benchmarks (margins, cost structures, pricing models)
+  ## Competitive Dynamics (Porter's Five Forces with evidence)
+  ## Barriers to Entry (startup costs, regulatory, tech, moats)
+  ## Supply Chain & Distribution (value chain, channels, chokepoints)
+  ## Technology & Innovation (automation, AI, emerging tech)
+  ## Regulatory Environment (policies, taxation, compliance, legislation)
+  ## Consumer Behavior (preferences, sustainability, pain points)
+  ## Data Points (verified numbers with source URLs)
+  ```
+
+### 5. Deck Agent
 - **Model**: `claude-sonnet-5`
 - **Role**: Creates Canva slide deck from research + solution
 - **Tools**:
@@ -159,7 +181,7 @@ async def run_case(company: str, question: str):
   9. Appendix (market data, competitor matrix, sources)
 - **Output**: Canva design URL + exported PDF in `cases/{company}/deck.pdf`
 
-### 5. Evaluator Agent
+### 6. Evaluator Agent
 - **Model**: `claude-opus-5` (needs strong reasoning for nuanced scoring)
 - **Role**: Scores the solution against PM interview rubrics, identifies gaps
 - **Tools**:
@@ -260,6 +282,7 @@ AgentCAZ/
 │   │   ├── research.py     # Research agent: Tool Runner + web_search + custom tools
 │   │   ├── solution.py     # Solution agent: reads research, outputs solution
 │   │   ├── outline.py      # Outline agent: reads research + solution, outputs deck outline
+│   │   ├── industry.py     # Industry research agent: web search, standalone sector research
 │   │   ├── deck.py         # Deck agent: reads outline, calls Canva API
 │   │   └── evaluator.py    # Evaluator agent: reads all outputs, scores and critiques
 │   ├── tools/
@@ -271,6 +294,7 @@ AgentCAZ/
 │   │   ├── researcher.md   # Research agent system prompt (includes CIRCLES, TAM/SAM/SOM)
 │   │   ├── solver.md       # Solution agent system prompt (includes RICE, AARRR)
 │   │   ├── outliner.md     # Outline agent system prompt (slide narrative design)
+│   │   ├── industry_researcher.md  # Industry research agent system prompt
 │   │   ├── deck_maker.md   # Deck agent system prompt
 │   │   └── evaluator.md    # Evaluator system prompt (scoring rubric)
 │   └── config.py           # Model choices, API keys, paths
@@ -281,7 +305,8 @@ AgentCAZ/
 │   ├── strategic_bet.md
 │   ├── diagnose_problem.md
 │   └── monetize_asset.md
-├── cases/                   # Output directory (created at runtime)
+├── cases/                   # Output directory for company cases (created at runtime)
+├── industries/              # Output directory for industry research (created at runtime)
 ├── .env                     # ANTHROPIC_API_KEY, CANVA_API_KEY
 ├── requirements.txt         # anthropic, click, python-dotenv, httpx
 └── pyproject.toml
@@ -309,7 +334,10 @@ python3 run.py solution -c "Spotify" -q "..." -a improve_product
 # Re-run just deck outline (after editing solution)
 python3 run.py outline -c "Spotify" -q "..." -a improve_product
 
-# List all cases
+# Research an industry (standalone, not part of case pipeline)
+python3 run.py industry -i "Fintech"
+
+# List all cases and industries
 python3 run.py list
 ```
 
@@ -360,6 +388,7 @@ Using **Anthropic's built-in `web_search_20260209` server tool** for both Resear
 | Solution | Opus 5 | 10K | ~$0.45 |
 | Outline | Opus 5 | 8K | ~$0.35 |
 | Deck | Sonnet 5 | 15K | ~$0.15 |
+| Industry Research | Sonnet 5 | 50K (search-heavy) | ~$0.50 |
 | Evaluator | Opus 5 | 15K | ~$0.70 |
 | **Total per case** | | | **~$2.15** |
 

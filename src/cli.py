@@ -9,10 +9,11 @@ from rich.console import Console
 from rich.panel import Panel
 from rich.markdown import Markdown
 
-from src.config import CASES_DIR, get_client
+from src.config import CASES_DIR, INDUSTRIES_DIR, get_client
 from src.agents.research import classify_archetype, run_research
 from src.agents.solution import run_solution
 from src.agents.outline import run_outline
+from src.agents.industry import run_industry_research
 
 console = Console()
 
@@ -148,16 +149,41 @@ def outline(company: str, question: str, archetype: str | None, dev: bool):
         console.print("[dim]Review the outline and edit as needed before creating the deck.[/dim]")
 
 
+@cli.command()
+@click.option("--industry", "-i", required=True, help="Industry or sector name")
+@click.option("--dev", is_flag=True, help="Use cached responses instead of calling the API")
+def industry(industry: str, dev: bool):
+    """Research an industry — market, competition, trends, and financials."""
+    client = get_client()
+    run_industry_research(client, industry, dev=dev)
+
+    ind_dir = INDUSTRIES_DIR / industry.lower().replace(" ", "_").replace("/", "_")
+    research_path = ind_dir / "industry_research.md"
+    if research_path.exists():
+        console.print(f"\n[bold]Industry research saved to:[/bold] {research_path}")
+
+
 @cli.command("list")
 def list_cases():
-    """List all case directories."""
-    if not CASES_DIR.exists():
-        console.print("[dim]No cases yet.[/dim]")
-        return
-    for d in sorted(CASES_DIR.iterdir()):
-        if d.is_dir():
-            files = [f.name for f in d.iterdir() if f.is_file()]
-            console.print(f"  [bold]{d.name}[/bold] — {', '.join(files) or 'empty'}")
+    """List all case and industry directories."""
+    has_content = False
+
+    if CASES_DIR.exists():
+        for d in sorted(CASES_DIR.iterdir()):
+            if d.is_dir():
+                files = [f.name for f in d.iterdir() if f.is_file()]
+                console.print(f"  [bold]{d.name}[/bold] — {', '.join(files) or 'empty'}")
+                has_content = True
+
+    if INDUSTRIES_DIR.exists():
+        for d in sorted(INDUSTRIES_DIR.iterdir()):
+            if d.is_dir():
+                files = [f.name for f in d.iterdir() if f.is_file()]
+                console.print(f"  [bold]{d.name}[/bold] [cyan](industry)[/cyan] — {', '.join(files) or 'empty'}")
+                has_content = True
+
+    if not has_content:
+        console.print("[dim]No cases or industries yet.[/dim]")
 
 
 if __name__ == "__main__":

@@ -4,6 +4,7 @@ __pycache__/
 *.egg-info/
 .cache/
 cases/*/.cache/
+industries/*/.cache/
 dist/
 build/
 .venv/
