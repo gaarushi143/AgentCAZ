@@ -1,0 +1,77 @@
+[
+  {
+    "fact": "Spotify total monthly active users (MAU), Q3 2025",
+    "value": "713 million (up 17M sequentially)",
+    "source": "https://www.fool.com/earnings/call-transcripts/2025/12/23/spotify-spot-q3-2025-earnings-call-transcript/"
+  },
+  {
+    "fact": "Spotify Premium subscribers, Q2 2025",
+    "value": "276 million (up 12% YoY)",
+    "source": "https://variety.com/2025/digital/news/spotify-q2-2025-earnings-miss-revenue-subscriber-growth-1236472968/"
+  },
+  {
+    "fact": "Spotify monthly active podcast users vs. total MAU (podcast engagement gap)",
+    "value": "42.4 million podcast MAU (2025) out of ~713-751 million total MAU (~6% engagement rate)",
+    "source": "https://backlinko.com/spotify-users"
+  },
+  {
+    "fact": "Total podcast titles hosted on Spotify",
+    "value": "nearly 7 million podcast titles; ~500,000 are video podcasts",
+    "source": "https://variety.com/2025/digital/news/spotify-wrapped-top-50-podcasts-2025-joe-rogan-theo-von-mel-robbins-1236597755/"
+  },
+  {
+    "fact": "Users who have streamed a video podcast on Spotify",
+    "value": "more than 390 million users, up 54% year-over-year (Q3 2025)",
+    "source": "https://techcrunch.com/2025/11/04/spotify-now-has-half-a-million-video-podcasts-which-nearly-400m-users-have-watched/"
+  },
+  {
+    "fact": "Podcast platform market share among weekly US podcast consumers (April 2025)",
+    "value": "YouTube ~39%, Spotify ~21%, Apple Podcasts ~8%",
+    "source": "https://commandyourbrand.com/podcast-platform-market-share-2025-spotify-apple-youtube-more/"
+  },
+  {
+    "fact": "YouTube overtaking Spotify as most-used podcast service among weekly consumers",
+    "value": "37% of weekly podcast consumers now use YouTube most often, up from 31% two years prior; Spotify has been overtaken",
+    "source": "https://www.insideradio.com/free/video-reshapes-podcasting-as-audience-hits-new-high-study-finds/article_7bcc18a5-45a6-4a2a-98ba-0e137d7a62cb.html"
+  },
+  {
+    "fact": "Where listeners discover their favorite podcast shows (Sounds Profitable research)",
+    "value": "40% discovered their favorite show on YouTube; YouTube + social media combined drive 61% of all favorite-show discovery (leaving in-app podcast platform discovery tools a minority channel)",
+    "source": "https://www.insideradio.com/free/show-discovery-moves-beyond-podcast-apps-new-research-shows/article_b320a16b-b4ce-4c75-9110-f55d2a8fbdb8.html"
+  },
+  {
+    "fact": "Active podcast discovery-seeking behavior among listeners",
+    "value": "50% of listeners looked for a new podcast in the past month; 45% started a new show in the past 3 months; 75% of limited-series listeners seek a replacement when a series ends",
+    "source": "https://www.insideradio.com/free/show-discovery-moves-beyond-podcast-apps-new-research-shows/article_b320a16b-b4ce-4c75-9110-f55d2a8fbdb8.html"
+  },
+  {
+    "fact": "Global podcasting industry market size, 2025",
+    "value": "~$28.2-47.75 billion in 2025 (estimates vary by methodology), growing at 23.7-30% CAGR toward $62-191 billion by 2026-2034",
+    "source": "https://www.imarcgroup.com/podcasting-market"
+  },
+  {
+    "fact": "Podcast time spent vs. music time spent on Spotify (engagement gap evidence)",
+    "value": "Average total time spent listening to podcasts (1,042 minutes/yr per MIDiA survey) is just 2.8% of average time spent listening to music (37,229 minutes/yr)",
+    "source": "https://www.midiaresearch.com/blog/overanalysing-our-2025-spotify-wrapped-what-midias-stats-say-about-the-industry"
+  },
+  {
+    "fact": "Spotify goal for podcast revenue",
+    "value": "Spotify aims to grow podcast revenue to $1 billion by 2026",
+    "source": "https://www.scribd.com/presentation/912795548/Spotify-Podcast-Monetization-Strategy-2025"
+  },
+  {
+    "fact": "Spotify payments to podcast creators/publishers",
+    "value": "Spotify paid over $100 million to podcast publishers and creators in Q1 2025 alone",
+    "source": "https://routenote.com/blog/spotify-paid-podcast-creators-100-million-in-q1-2025/"
+  },
+  {
+    "fact": "iHeartMedia podcast business growth (competitor signal)",
+    "value": "iHeartMedia podcast revenue grew 24.5%-27% YoY in 2025 (Q1 podcast revenue $180M); claims #1 podcast audience per Podtrac/Triton",
+    "source": "https://www.insideradio.com/free/iheartmedia-posts-1-13b-in-q4-podcasts-drive-24-revenue-jump/article_82042918-3fc1-462f-88f4-33e1d99eb243.html"
+  },
+  {
+    "fact": "Apple Podcasts catalog size comparison",
+    "value": "Apple Podcasts hosts over 2.82 million podcast titles vs. Spotify's ~7 million",
+    "source": "https://www.digitalsilk.com/digital-trends/podcast-statistics/"
+  }
+]

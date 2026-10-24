@@ -1,0 +1,26 @@
+[
+  {
+    "slug": "spotify",
+    "company": "Spotify",
+    "question": "How would you improve Spotify's podcast discovery?",
+    "archetype": "improve_product"
+  },
+  {
+    "slug": "make_my_trip",
+    "company": "MakeMyTrip",
+    "question": "How would you improve MakeMyTrip's customer experience?",
+    "archetype": "improve_product"
+  },
+  {
+    "slug": "razorpayx",
+    "company": "RazorpayX",
+    "question": "How would you improve RazorpayX for small businesses?",
+    "archetype": "improve_product"
+  },
+  {
+    "slug": "razorpay",
+    "company": "Razorpay",
+    "question": "What strategic bet should Razorpay make next?",
+    "archetype": "strategic_bet"
+  }
+]

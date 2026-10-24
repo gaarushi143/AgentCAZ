@@ -159,6 +159,30 @@ AgentCAZ/
 - **RICE** — Feature prioritization (Solution Agent)
 - **AARRR** — Metrics framework (Solution Agent)
 
+## Web UI
+
+A minimal web front end lives in `web/`. It has two modes:
+
+- **Demo:** replays saved cases from `demo/` (no API calls, free)
+- **Live run:** runs the real agents, with review checkpoints between stages. Needs an access code and is capped at `MAX_LIVE_RUNS_PER_DAY`
+
+Run it locally:
+
+```bash
+pip install -r requirements.txt
+cp .env.example .env        # add ANTHROPIC_API_KEY and ACCESS_CODE
+python3 -m web.app          # http://localhost:5000
+```
+
+### Deploy to Render
+
+1. Push this repo to GitHub
+2. In Render: **New → Blueprint**, pick the repo (it reads `render.yaml`)
+3. Set `ANTHROPIC_API_KEY` and `ACCESS_CODE` when prompted
+4. Open `https://<your-service>.onrender.com`
+
+Notes: the free plan sleeps when idle, so the first visit takes ~30s. Live-run state is kept in memory, so a restart clears in-progress runs. To add a demo case, copy a finished `cases/<company>/` folder (without `.cache/`) into `demo/` and add it to `demo/cases.json`.
+
 ## Dev Mode
 
 After a successful run, agent transcripts are cached in `.cache/`. Pass `--dev` to replay without API calls — useful for iterating on display formatting, tools, or downstream agents without burning tokens.

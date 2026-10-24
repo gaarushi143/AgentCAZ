@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: agentcaz
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    # One worker so in-memory run state is shared; threads handle polling.
+    startCommand: gunicorn web.app:app --workers 1 --threads 8 --timeout 120
+    healthCheckPath: /healthz
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.12.7"
+      - key: ANTHROPIC_API_KEY
+        sync: false
+      - key: ACCESS_CODE
+        sync: false
+      - key: MAX_LIVE_RUNS_PER_DAY
+        value: "5"

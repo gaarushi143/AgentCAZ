@@ -1,0 +1,102 @@
+[
+  {
+    "fact": "RazorpayX processes annualised transaction volume (neobanking/business banking arm)",
+    "value": "$30 billion, with 85% YoY growth; 50,000+ businesses use RazorpayX",
+    "source": "https://digitalinasia.com/razorpay-explained/"
+  },
+  {
+    "fact": "Razorpay overall consolidated revenue FY25",
+    "value": "Rs 3,783 crore, up 65% YoY from Rs 2,296 crore in FY24",
+    "source": "https://www.business-standard.com/industry/news/razorpay-fy25-results-revenue-up-65-percent-loss-due-to-tax-costs-125101601178_1.html"
+  },
+  {
+    "fact": "Razorpay total annualised Total Payment Volume (TPV) and merchant base",
+    "value": "$180 billion TPV, 8 million+ merchants, ~55% share of India's online payment gateway market, valued at $9.2B (June 2025)",
+    "source": "https://digitalinasia.com/razorpay-explained/"
+  },
+  {
+    "fact": "RazorpayX Payouts pricing",
+    "value": "Free current account; 250 free payouts/month then ~\u20b92-5 per payout depending on rail/volume (\u20b91.5 up to \u20b91,000; \u20b93 for \u20b91,000-25,000; \u20b97 above \u20b925,000)",
+    "source": "https://productgrowth.in/tools/payments/razorpay-x/"
+  },
+  {
+    "fact": "RazorpayX Corporate Card default user roles",
+    "value": "Owner/Admin (full access & approval), Finance (transactions & repayments), Cardholder (view own card/transactions only), Viewer (view all org cards) \u2014 no \"staff-initiated payout with bill upload\" role exists",
+    "source": "https://razorpay.com/docs/x/capital/corporate-cards/?preferred-country=IN"
+  },
+  {
+    "fact": "RazorpayX Vendor Payments / AP automation core workflow",
+    "value": "OCR invoice capture, 3-way PO-GRN-Invoice matching, multi-layer team/amount-based approval workflows, one-click payouts from dashboard \u2014 fundamentally a desk/dashboard-led, invoice-first flow, not phone-first staff-initiated payment",
+    "source": "https://razorpay.com/x/vendor-payments/"
+  },
+  {
+    "fact": "UPI Circle (NPCI delegated payments) limits",
+    "value": "Primary user can add up to 5 secondary users; Full Delegation allows secondary user to transact without per-transaction approval up to \u20b95,000 per transaction and \u20b915,000 per month; Partial Delegation requires primary's UPI PIN each time; a secondary user can be linked to only one primary",
+    "source": "https://fintechchronicler.substack.com/p/npci-s-upi-circle-what-you-need-to"
+  },
+  {
+    "fact": "UPI Circle launch date and purpose",
+    "value": "Launched by NPCI on August 13, 2024, to let primary UPI account holders delegate payment capability to trusted secondary users without sharing bank credentials",
+    "source": "https://www.business-standard.com/finance/personal-finance/npci-launches-upi-circle-for-secure-delegated-payments-with-trusted-users-124081900536_1.html"
+  },
+  {
+    "fact": "UPI overall scale FY2025-26 / India digital payments dominance",
+    "value": "24,162 crore annual transactions (FY25-26), \u20b9314 lakh crore annual value, UPI ~85% of India's digital payments by FY2025-26, ~49% of world's real-time payment volume",
+    "source": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2257087&reg=3&lang=1"
+  },
+  {
+    "fact": "UPI P2M (merchant) share of transaction volume vs value",
+    "value": "P2M = 63% of UPI volume but only ~28-29% of value; 86% of P2M transactions are under \u20b9500 (small-ticket, high-frequency) \u2014 consistent with vendor/kirana micro-payments",
+    "source": "https://coinlaw.io/upi-statistics/"
+  },
+  {
+    "fact": "UPI QR code / merchant acceptance network growth",
+    "value": "UPI QR codes grew 91.5% to 65.8 crore (658 million) in 2024-25; PoS terminals grew 24.7% to 1.1 crore; ~70 million QR-enabled merchants nationwide, mostly kirana/micro-merchants (\"Kirana Effect\")",
+    "source": "https://www.medianama.com/2025/05/223-upi-84-india-fy25-retail-payment-volume-rbi/"
+  },
+  {
+    "fact": "UPI accounts for majority of India's retail digital payments",
+    "value": "UPI handled 84% of India's retail payment transaction volume in FY25 per RBI Annual Report; 185.9 billion UPI transactions in FY25 vs 131.1 billion in FY24 (41.7% growth)",
+    "source": "https://www.medianama.com/2025/05/223-upi-84-india-fy25-retail-payment-volume-rbi/"
+  },
+  {
+    "fact": "Indian MSME sector size and employment",
+    "value": "~63.4 million MSMEs in India (630.5 lakh micro, 3.3 lakh small, ~0.05 lakh medium); MSMEs employ ~111 million people and contribute ~27-31% of GDP, ~45-48% of exports",
+    "source": "https://www.ibef.org/blogs/india-s-msme-sector"
+  },
+  {
+    "fact": "Udyam-registered MSME count (formal/registered segment)",
+    "value": "4,71,55,579 (~4.72 crore) MSMEs registered on Udyam portal as of June 2026; 98.9% are micro enterprises, ~4.9 lakh small, only 37,042 medium",
+    "source": "https://datarankindia.com/india-msme-statistics/"
+  },
+  {
+    "fact": "UPI preference and merchant digital acceptance survey (govt-backed, 2025)",
+    "value": "UPI is preferred by 57% of transactions vs cash at 38%; 94% of small merchants now accept UPI; 72% of merchants satisfied with digital transactions; 57% reported sales increase after adopting digital payments (survey of 10,378 respondents incl. 2,199 merchants across 15 states)",
+    "source": "https://openthemagazine.com/business/upi-overtakes-cash-as-indias-most-preferred-payment-mode-survey"
+  },
+  {
+    "fact": "OkCredit (digital khata app) scale",
+    "value": "OkCredit has 5,000,000+ installs on Play Store (and is described elsewhere as used by 30 million+ MSMEs), serving 50+ business categories across 2,800+ Indian cities for udhar/credit ledger tracking",
+    "source": "https://okcredit.in/en/"
+  },
+  {
+    "fact": "Open Money (neobank for SMEs) positioning and pricing",
+    "value": "Open offers business current account + connected banking (60+ banks), bookkeeping, GST invoicing, VISA debit cards for employees with limits, and a \"Founder One Card\"; pricing tiers Free/\u20b91,199-\u20b91,499/\u20b95,599-\u20b96,999 per month depending on plan",
+    "source": "https://open.money/pricing"
+  },
+  {
+    "fact": "EnKash prepaid corporate card issuance speed and positioning",
+    "value": "EnKash issues prepaid corporate cards (reloadable up to \u20b92,00,000, MCC-locked) in under 60 seconds via its own RBI-authorised PPI license (not bank-routed); eliminates employee reimbursements; backed by $23M funding, 5,000+ businesses",
+    "source": "https://www.enkash.com/products/corporate-cards"
+  },
+  {
+    "fact": "Pleo (European SME spend management analogue) model",
+    "value": "Pleo issues employees smart company cards with individual pre-set spend limits; employees photograph receipts via app for instant capture (no expense reports); serves European SMEs ~5-200 employees; pricing \u20ac0-\u20ac79/month tiers",
+    "source": "https://www.pleo.io/en/howitworks"
+  },
+  {
+    "fact": "Ramp vs Brex spend control enforcement difference (global analogue for pre- vs post-transaction control)",
+    "value": "Ramp blocks out-of-policy spend before the transaction completes (hard decline at point of sale); Brex sets policy thresholds that trigger alerts/review after the fact \u2014 illustrates \"block vs notify\" trade-off relevant to H3",
+    "source": "https://relayfi.com/blog/brex-vs-ramp/"
+  }
+]
